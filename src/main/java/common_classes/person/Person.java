@@ -1,6 +1,6 @@
 package common_classes.person;
 
-public class Person {
+public class Person implements Comparable<Person> {
 
     private String name;
     private int age;
@@ -36,5 +36,22 @@ public class Person {
         String objName = ((Person)obj).getName();
         int objAge = ((Person)obj).getAge();
         return name.equalsIgnoreCase(objName) && age == objAge;
+    }
+
+
+    @Override
+    public int compareTo(Person o) {
+        int compareRes = 0;
+        //Сортирока мужикоффф
+            compareRes = new Integer(o.getSex().getIdx()).compareTo(getSex().getIdx());
+            if (compareRes == 0) {
+                //Сортируем по возрасту
+                compareRes = new Integer(o.getAge()).compareTo(getAge());
+                if (compareRes == 0) {
+                    //Сортировка по имени
+                    compareRes = getName().compareTo(o.getName());
+                }
+            }
+        return compareRes;
     }
 }

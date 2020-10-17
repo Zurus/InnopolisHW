@@ -9,12 +9,11 @@ import java.security.SecureRandom;
 public class PersonUtils {
     private static int N = 10000;
 
-
-    public static Person[] generatePersons() {
-        Person[] persons = new Person[N];
+    public static Person[] generatePersons(int len) {
+        Person[] persons = new Person[len];
         SecureRandom secureRandom = new SecureRandom();
 
-        for (int i = 0; i < N ; i++) {
+        for (int i = 0; i < len ; i++) {
             String randomName = new BigInteger(130, secureRandom).toString(32);
             int age = secureRandom.nextInt(100);
             Sex sex = secureRandom.nextInt() < 50 ? Sex.MAN: Sex.WOMAN;
@@ -22,6 +21,10 @@ public class PersonUtils {
             persons[i] = new Person(randomName,age,sex);
         }
         return persons;
+    }
+
+    public static Person[] generatePersons() {
+       return generatePersons(N);
     }
 
 }
