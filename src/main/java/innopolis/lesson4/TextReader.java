@@ -1,4 +1,4 @@
-package innopolis.study.lesson4;
+package innopolis.lesson4;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;

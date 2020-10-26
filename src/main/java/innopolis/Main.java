@@ -1,7 +1,7 @@
-package innopolis.study;
+package innopolis;
 
-import innopolis.study.lesson4.TextGenerator;
-import innopolis.study.lesson4.TextReader;
+import innopolis.lesson4.TextGenerator;
+import innopolis.lesson4.TextReader;
 import org.junit.Test;
 import utils.StringUtils;
 
