@@ -1,4 +1,4 @@
-package innopolis.study;
+package innopolis;
 import innopolis.lesson3.Pet;
 import innopolis.lesson3.PetUtils;
 import innopolis.lesson3.PetsDataBase;

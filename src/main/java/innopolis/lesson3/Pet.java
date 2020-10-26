@@ -1,7 +1,7 @@
-package innopolis.study.lesson3;
+package innopolis.lesson3;
 
-import common_classes.person.Person;
 
+import innopolis.lesson1.person.Person;
 
 public class Pet implements Comparable<Pet> {
     private String serial;

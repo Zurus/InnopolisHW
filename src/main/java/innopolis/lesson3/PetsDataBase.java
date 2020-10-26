@@ -1,7 +1,7 @@
-package innopolis.study.lesson3;
+package innopolis.lesson3;
 
-import common_classes.person.Person;
-import org.junit.Test;
+
+import innopolis.lesson1.person.Person;
 
 import java.util.*;
 
@@ -32,6 +32,14 @@ public class PetsDataBase {
             }
         }
         throw new RuntimeException("Питомец не найден!");
+    }
+
+    public void updatePetData(String serial, Pet petUpdate) {
+        for (Pet pet : pets) {
+            if (pet.getSerial().equals(serial)) {
+                pet = petUpdate;
+            }
+        }
     }
 
     public void updatePetData(String serial, Object ... objects) {
