@@ -1,7 +1,7 @@
 package innopolis.study;
-import innopolis.study.lesson3.Pet;
-import innopolis.study.lesson3.PetUtils;
-import innopolis.study.lesson3.PetsDataBase;
+import innopolis.lesson3.Pet;
+import innopolis.lesson3.PetUtils;
+import innopolis.lesson3.PetsDataBase;
 import org.junit.Test;
 
 public class Main {
