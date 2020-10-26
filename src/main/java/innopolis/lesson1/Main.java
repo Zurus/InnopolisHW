@@ -1,4 +1,4 @@
-package innopolis.study.lesson1;
+package innopolis.lesson1;
 import Utils.MathUtils;
 import org.junit.Test;
 

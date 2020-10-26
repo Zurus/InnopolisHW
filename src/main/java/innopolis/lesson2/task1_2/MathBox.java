@@ -1,15 +1,17 @@
-package innopolis.study.lesson2.task1_2;
+package innopolis.lesson2.task1_2;
 
 import java.util.*;
 
 public class MathBox extends ObjectBox {
     private Number[] nums;
     private Set<Number> numSet;
+    private int hashCode = -1;
 
     public MathBox(Number[] nums) {
         this.nums = nums;
         numSet = new TreeSet<Number>();
-        Collections.addAll(numSet,nums);
+        //Отсеиваем лишнее
+        Collections.addAll(numSet, nums);
     }
 
 
@@ -30,10 +32,9 @@ public class MathBox extends ObjectBox {
         Iterator<Number> iter = numSet.iterator();
         while(iter.hasNext()) {
             Number num = iter.next();
-            iter.remove();
             buffSet.add(num.doubleValue()/split);
         }
-        numSet.addAll(buffSet);
+        numSet = buffSet;
     }
 
     @Override
@@ -46,7 +47,10 @@ public class MathBox extends ObjectBox {
 
     @Override
     public int hashCode() {
-        return Objects.hash(numSet);
+        if (hashCode == -1) {
+            hashCode = new Random().nextInt();
+        }
+        return hashCode;
     }
 
     @Override

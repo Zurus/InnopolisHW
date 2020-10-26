@@ -1,7 +1,7 @@
-package innopolis.study.lesson2;
+package innopolis.lesson2;
 
 import Utils.MathUtils;
-import innopolis.study.lesson2.task1_2.MathBox;
+import innopolis.lesson2.task1_2.MathBox;
 import org.junit.Test;
 
 public class Main {

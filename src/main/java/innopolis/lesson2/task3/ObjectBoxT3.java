@@ -1,4 +1,4 @@
-package innopolis.study.lesson2.task3;
+package innopolis.lesson2.task3;
 
 import java.util.HashSet;
 import java.util.Set;

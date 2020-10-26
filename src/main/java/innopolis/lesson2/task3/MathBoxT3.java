@@ -1,15 +1,14 @@
-package innopolis.study.lesson2.task3;
-
-import innopolis.study.lesson2.task1_2.MathBox;
+package innopolis.lesson2.task3;
 
 import java.util.*;
 
 public class MathBoxT3 <T extends Number> extends ObjectBoxT3 {
     private T [] nums;
+    private int hashCode = -1;
 
     public MathBoxT3(T [] nums) {
         this.nums = nums;
-        numSet = new TreeSet<Number>();
+        numSet = new TreeSet<T>();
         Collections.addAll(numSet,nums);
     }
 
@@ -21,18 +20,18 @@ public class MathBoxT3 <T extends Number> extends ObjectBoxT3 {
     public Number summator() {
         double result = 0.0;
         for (Object num : numSet) {
-            result += ((Number)num).doubleValue();
+            result += ((T)num).doubleValue();
         }
         return result;
     }
 
     public void splitter(int split) {
-        Set<Number> buffSet = new HashSet<Number>();
-        Iterator<Number> iter = numSet.iterator();
+        Set<T> buffSet = new HashSet<T>();
+        Iterator<T> iter = numSet.iterator();
         while(iter.hasNext()) {
-            Number num = iter.next();
-            iter.remove();
-            buffSet.add(num.doubleValue()/split);
+            Object num = iter.next();
+            //Как можно исправить этот момент?
+            //buffSet.add(  ((T)num).doubleValue() /split);
         }
         numSet.addAll(buffSet);
     }
@@ -47,7 +46,10 @@ public class MathBoxT3 <T extends Number> extends ObjectBoxT3 {
 
     @Override
     public int hashCode() {
-        return Objects.hash(numSet);
+        if (hashCode == -1) {
+            hashCode = new Random().nextInt();
+        }
+        return hashCode;
     }
 
     @Override
