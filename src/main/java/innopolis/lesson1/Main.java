@@ -1,9 +1,9 @@
-package innopolis.study.lesson1;
-import common_classes.person.Person;
-import innopolis.study.lesson1.extecptions.IncorrectArrayValue;
-import innopolis.study.lesson1.extecptions.MyException;
-import innopolis.study.lesson1.sorted.Sort;
-import innopolis.study.lesson1.sorted.Sortable;
+package innopolis.lesson1;
+import innopolis.lesson1.common.Person;
+import innopolis.lesson1.extecptions.IncorrectArrayValue;
+import innopolis.lesson1.extecptions.MyException;
+import innopolis.lesson1.sorted.Sort;
+import innopolis.lesson1.sorted.Sortable;
 import org.junit.Test;
 import utils.PersonUtils;
 

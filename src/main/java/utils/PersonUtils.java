@@ -1,7 +1,7 @@
 package utils;
 
-import common_classes.person.Person;
-import common_classes.person.Sex;
+import innopolis.lesson1.common.Person;
+import innopolis.lesson1.common.Sex;
 
 import java.math.BigInteger;
 import java.security.SecureRandom;

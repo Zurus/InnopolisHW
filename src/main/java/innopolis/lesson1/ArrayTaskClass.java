@@ -1,6 +1,6 @@
-package innopolis.study.lesson1;
+package innopolis.lesson1;
 
-import innopolis.study.lesson1.extecptions.IncorrectArrayValue;
+import innopolis.lesson1.extecptions.IncorrectArrayValue;
 
 import java.util.Arrays;
 import java.util.Random;

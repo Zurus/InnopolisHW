@@ -1,7 +1,7 @@
-package innopolis.study.lesson1.sorted;
+package innopolis.lesson1.sorted;
 
 
-import common_classes.person.Person;
+import innopolis.lesson1.common.Person;
 
 import java.util.Arrays;
 import java.util.Comparator;

@@ -1,4 +1,4 @@
-package innopolis.study;
+package innopolis;
 import org.junit.Test;
 
 public class Main {

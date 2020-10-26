@@ -1,8 +1,8 @@
-package innopolis.study.lesson1.sorted;
+package innopolis.lesson1.sorted;
 
-import common_classes.person.Person;
-import common_classes.person.Sex;
-import innopolis.study.lesson1.extecptions.EqualsPersonException;
+import innopolis.lesson1.common.Sex;
+import innopolis.lesson1.extecptions.EqualsPersonException;
+import innopolis.lesson1.common.Person;
 
 import java.math.BigInteger;
 import java.security.SecureRandom;
