@@ -43,7 +43,7 @@ public class Person implements Comparable<Person> {
     public int compareTo(Person o) {
         int compareRes = 0;
         //Сортирока мужикоффф
-            compareRes = new Integer(o.getSex().getIdx()).compareTo(getSex().getIdx());
+            compareRes = o.getSex().compareTo(getSex());
             if (compareRes == 0) {
                 //Сортируем по возрасту
                 compareRes = new Integer(o.getAge()).compareTo(getAge());
