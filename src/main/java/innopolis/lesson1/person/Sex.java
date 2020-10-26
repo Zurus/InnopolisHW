@@ -1,4 +1,4 @@
-package common_classes.person;
+package innopolis.lesson1.person;
 
 public enum Sex {
     WOMAN(0),
