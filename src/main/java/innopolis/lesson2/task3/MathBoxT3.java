@@ -1,39 +1,30 @@
 package innopolis.lesson2.task3;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
-public class MathBoxT3 <T extends Number> extends ObjectBoxT3 {
-    private T [] nums;
+public class MathBoxT3 extends ObjectBoxT3 {
+    private Number [] nums;
+    private Set<Number> numSet;
     private int hashCode = -1;
 
-    public MathBoxT3(T [] nums) {
+    public MathBoxT3(Number [] nums) {
         this.nums = nums;
-        numSet = new TreeSet<T>();
-        Collections.addAll(numSet,nums);
+        numSet = new TreeSet<Number>();
+        Collections.addAll(numSet, nums);
     }
-
 
     public void printData() {
         System.out.println(numSet);
     }
 
     public Number summator() {
-        double result = 0.0;
-        for (Object num : numSet) {
-            result += ((T)num).doubleValue();
-        }
+        double result = numSet.stream().mapToDouble(value -> value.doubleValue()).sum();
         return result;
     }
 
     public void splitter(int split) {
-        Set<T> buffSet = new HashSet<T>();
-        Iterator<T> iter = numSet.iterator();
-        while(iter.hasNext()) {
-            Object num = iter.next();
-            //Как можно исправить этот момент?
-            //buffSet.add(  ((T)num).doubleValue() /split);
-        }
-        numSet.addAll(buffSet);
+        numSet = numSet.stream().map(number -> number.doubleValue()/split).collect(Collectors.toSet());
     }
 
     @Override
@@ -41,7 +32,7 @@ public class MathBoxT3 <T extends Number> extends ObjectBoxT3 {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         MathBoxT3 mathBox = (MathBoxT3) o;
-        return Objects.equals(numSet, mathBox.getNumSet());
+        return Objects.equals(collectionsSet, mathBox.getCollectionsSet());
     }
 
     @Override

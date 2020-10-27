@@ -1,6 +1,7 @@
 package innopolis.lesson2.task1_2;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class MathBox extends ObjectBox {
     private Number[] nums;
@@ -20,21 +21,12 @@ public class MathBox extends ObjectBox {
     }
 
     public Number summator() {
-        double result = 0.0;
-        for (Number num : numSet) {
-            result += num.doubleValue();
-        }
+        double result = numSet.stream().mapToDouble(value -> value.doubleValue()).sum();
         return result;
     }
 
     public void splitter(int split) {
-        Set<Number> buffSet = new HashSet<Number>();
-        Iterator<Number> iter = numSet.iterator();
-        while(iter.hasNext()) {
-            Number num = iter.next();
-            buffSet.add(num.doubleValue()/split);
-        }
-        numSet = buffSet;
+        numSet = numSet.stream().map(number -> number.doubleValue() / split).collect(Collectors.toSet());
     }
 
     @Override

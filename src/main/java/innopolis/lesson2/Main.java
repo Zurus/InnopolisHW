@@ -13,6 +13,7 @@ public class Main {
         mb.printData();
         mb.splitter(10);
         mb.printData();
+        System.out.println(mb.summator());
     }
 
 

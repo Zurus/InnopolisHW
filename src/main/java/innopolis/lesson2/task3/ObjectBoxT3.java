@@ -3,22 +3,22 @@ package innopolis.lesson2.task3;
 import java.util.HashSet;
 import java.util.Set;
 
-public class ObjectBoxT3 <T extends Number> {
-    protected Set<T> numSet = new HashSet<>();
+public class ObjectBoxT3 <MathBoxT3> {
+    protected Set<MathBoxT3> collectionsSet = new HashSet<>();
 
-    public void addObject(T obj) {
-        numSet.add(obj);
+    public void addObject(MathBoxT3 obj) {
+        collectionsSet.add(obj);
     }
 
-    public void remove(T obj) {
-        numSet.remove(obj);
+    public void remove(MathBoxT3 obj) {
+        collectionsSet.remove(obj);
     }
 
     public String dump () {
-        return numSet.toString();
+        return collectionsSet.toString();
     }
 
-    public Set<T> getNumSet() {
-        return numSet;
+    public Set<MathBoxT3> getCollectionsSet() {
+        return collectionsSet;
     }
 }
