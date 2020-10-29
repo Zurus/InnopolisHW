@@ -11,11 +11,19 @@ import java.lang.reflect.Proxy;
 public class MyClassInitializer {
 
     public void testProxy(String methodText) {
-        Object proxyObject = getProxyObject();
-        ((Worker)proxyObject).doWork();
+        try {
+            Object proxyObject = getProxyObject();
+            ((Worker)proxyObject).doWork();
+        } catch (ClassNotFoundException e) {
+            System.out.println("Класс не найден!");
+        } catch (IllegalAccessException e) {
+            System.out.println("Что - то с доступом!");
+        } catch (InstantiationException e) {
+            System.out.println("Ошибка инициализации");
+        }
     }
 
-    private Object getProxyObject() {
+    private Object getProxyObject() throws ClassNotFoundException, IllegalAccessException, InstantiationException {
         final MyClassLoader classLoader = new MyClassLoader();
         Class[] interfaces = {Worker.class};
         InvocationHandler myHandler = new InvocationHandler() {

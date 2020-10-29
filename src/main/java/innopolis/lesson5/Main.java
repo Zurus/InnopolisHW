@@ -1,5 +1,7 @@
 package innopolis.lesson5;
 
+import javax.tools.JavaCompiler;
+import javax.tools.ToolProvider;
 import java.io.*;
 import java.util.Scanner;
 
@@ -8,7 +10,9 @@ import java.util.Scanner;
  */
 public class Main {
     private final static Scanner sc = new Scanner(System.in);
-    //private final static String PATH = Main.class.getProtectionDomain().getCodeSource().getLocation().getPath() + Main.class.getPackage().getName().replaceAll("[.]","/");\
+    private final static String PATH_OUTPUT =
+        SomeClass.class.getProtectionDomain().getCodeSource().getLocation().getPath() + SomeClass.class.getPackage().getName().replaceAll("[.]","/");
+
     private final static String PATH = System.getProperty("user.dir") +"\\src\\main\\java\\" + SomeClass.class.getName().replaceAll("[.]","\\\\")+".java";
     //private final static String PATH_2 = System.getProperty("user.dir") +"\\src\\main\\java\\" + Placeholder.class.getName().replaceAll("[.]","\\\\")+".java";
     private final static String MARK_REWRITE = "public void doWork() {";
@@ -17,14 +21,30 @@ public class Main {
 
 
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ClassNotFoundException, IllegalAccessException, InstantiationException {
 
         final String methodText = getMethodText();
         writeTextMethod(methodText);
+        compileSomeClass();
         MyClassInitializer myClassInitializer = new MyClassInitializer();
         myClassInitializer.testProxy(methodText);
     }
 
+    private static void compileSomeClass() {
+//        try {
+//            System.out.println(PATH_OUTPUT);
+//            JavaCompiler compiler = ToolProvider.getSystemJavaCompiler();
+//            compiler.run(null,new FileOutputStream(PATH_OUTPUT),null,PATH);
+//
+//        } catch (Exception e) {
+//            System.out.println(e.getMessage());
+//        }
+
+        System.out.println(PATH);
+        System.out.println(PATH_OUTPUT);
+        JavaCompiler compiler = ToolProvider.getSystemJavaCompiler();
+        compiler.run(null,null ,null,PATH);
+    }
 
     public static void writeTextMethod(String textMethod) {
         final StringBuilder sb = new StringBuilder();

@@ -8,8 +8,5 @@ public class SomeClass implements Worker {
     @Rewrite
     @Override
     public void doWork() {
-System.out.println("Работает!");
-
-
     }
 }
