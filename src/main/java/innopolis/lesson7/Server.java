@@ -24,7 +24,7 @@ public class Server {
                 String word = "";
                 while (!(word = in.readLine()).equalsIgnoreCase("end")) {
                     System.out.println(word);
-                    out.write("Держи ответ!!");
+                    //out.write("Держи ответ!!");
                 }
             }
             server.close();

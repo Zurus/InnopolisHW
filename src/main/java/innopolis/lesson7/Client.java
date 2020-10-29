@@ -27,8 +27,8 @@ public class Client {
                 while (!(word = reader.readLine()).equalsIgnoreCase(END)) {
                     out.write(word + "\n");
                     out.flush();
-                    String serverWord = in.readLine();
-                      System.out.println(serverWord);
+//                    String serverWord = in.readLine();
+//                      System.out.println(serverWord);
                 }
             }
         } catch (UnknownHostException e) {
