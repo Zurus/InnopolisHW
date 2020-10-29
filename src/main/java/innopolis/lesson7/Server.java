@@ -21,15 +21,10 @@ public class Server {
             clientSocket = server.accept();
             try (BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
                  BufferedWriter out = new BufferedWriter(new OutputStreamWriter(clientSocket.getOutputStream()))) {
-                //String word = "";
-//                while ((word = in.readLine()) != null) {
-//                    System.out.println(word);
-//                    out.write("Пошел ты на хер козел!");
-//                }
                 String word = "";
                 while (!(word = in.readLine()).equalsIgnoreCase("end")) {
                     System.out.println(word);
-                    out.write("Пошел ты на хер козел!");
+                    out.write("Держи ответ!!");
                 }
             }
             server.close();
