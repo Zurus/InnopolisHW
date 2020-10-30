@@ -2,6 +2,8 @@ package innopolis.lesson4;
 
 import java.math.BigInteger;
 import java.security.SecureRandom;
+import java.util.Arrays;
+import java.util.stream.Collectors;
 
 import static innopolis.lesson4.TextGenerator.RANDOM;
 
@@ -48,25 +50,32 @@ public class SentenceGenerator {
 
     private String makeSentence(String[] words) {
         StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < words.length; i++) {
-            sb.append(words[i]);
-            if (i < words.length - 1) {
-                sb.append(getSplitter());
-            }
-        }
+//        for (int i = 0; i < words.length; i++) {
+//            sb.append(words[i]);
+//            if (i < words.length - 1) {
+//                sb.append(getSplitter());
+//            }
+//        }
+        //Возможен разделить "Запятая", как можно победить?
+        Arrays.stream(words).forEach(word -> sb.append(word).append(getSplitter()));
+
         //В конце предложения должна быть точка или еще что - то
         sb.append(getEnder());
         return sb.toString();
     }
 
-    private String [] getWords() {
+    public String [] getWords() {
         int sentenceLen = 1 + RANDOM.nextInt(SENTENCE_LEN);
         String [] words = new String[sentenceLen];
         //Готовим слова для предложения
-        for (int i = 1; i < words.length; i++) {
-            words[i] = generator.generateRandomLenString();
-        }
-        return words;
+//        for (int i = 1; i < words.length; i++) {
+//            words[i] = generator.generateRandomLenString();
+//        }
+        Arrays.stream(words).map( word -> word = generator.generateRandomLenString()).collect(Collectors.toList()).toArray();
+        return (String[]) Arrays.stream(words)
+                                .map( word -> word = generator.generateRandomLenString())
+                                .collect(Collectors.toList())
+                                .toArray();
     }
 
     //Генерируем предолжение с обязательным словом
