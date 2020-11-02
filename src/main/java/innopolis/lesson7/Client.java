@@ -1,5 +1,7 @@
 package innopolis.lesson7;
 
+import innopolis.lesson7.multichatVersion1.Constant;
+
 import java.io.*;
 import java.net.Socket;
 import java.net.UnknownHostException;
@@ -13,8 +15,6 @@ public class Client {
 
     private BufferedReader reader;
 
-    private final static String END = "end";
-
     public static void main(String[] args) {
 
         try {
@@ -24,11 +24,13 @@ public class Client {
                  BufferedWriter out = new BufferedWriter(new OutputStreamWriter(clientSocket.getOutputStream()))) {
                 System.out.println("Наишите ваше сообщение!");
                 String word = "";
-                while (!(word = reader.readLine()).equalsIgnoreCase(END)) {
-                    out.write(word + "\n");
+                while (true) {
+                    word = reader.readLine();
+                    out.write(word+"\n");
                     out.flush();
-//                    String serverWord = in.readLine();
-//                      System.out.println(serverWord);
+                    if(word.equalsIgnoreCase(Constant.QUIET)) {
+                        break;
+                    }
                 }
             }
         } catch (UnknownHostException e) {
