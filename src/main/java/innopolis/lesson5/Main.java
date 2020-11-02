@@ -13,7 +13,7 @@ public class Main {
     //private final static String PATH = Main.class.getProtectionDomain().getCodeSource().getLocation().getPath() + Main.class.getPackage().getName().replaceAll("[.]","/");\
     //private final static String PATH = System.getProperty("user.dir") +"\\src\\main\\java\\" + SomeClass.class.getName().replaceAll("[.]","\\\\")+".java";
     //private final static String PATH_2 = System.getProperty("user.dir") +"\\src\\main\\java\\" + Placeholder.class.getName().replaceAll("[.]","\\\\")+".java";
-    private final static String MARK_REWRITE = "public void doWork() {";
+    //private final static String MARK_REWRITE = "public void doWork() {";
     private final static String END = "end";
 
 
@@ -23,20 +23,12 @@ public class Main {
         new SomeClassCreator().generateClass(methodText);
     }
 
-    @Test
-    public void test2() {
-        new MyClassInitializer().LoadClass();
-    }
-    @Test
-    public void test3() {
-        new MyClassInitializer().TestName();
-    }
-
-
     public static void main(String[] args) {
 
         final String methodText = getMethodText();
-        File file = new SomeClassCreator().generateClass(methodText);
+        SomeClassCreator creator = new SomeClassCreator();
+        creator.generateClass(methodText);
+        File file = creator.compileClass();
         MyClassInitializer myClassInitializer = new MyClassInitializer();
         myClassInitializer.testProxy(file);
     }

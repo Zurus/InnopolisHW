@@ -13,32 +13,15 @@ import java.lang.reflect.Proxy;
 public class MyClassInitializer {
     private final static String className = MyClassInitializer.class.getPackage().getName()+".SomeClass";
 
-
-    public void TestName () {
-        System.out.println(className);
-        //System.out.println(SomeClass.class.getName());
-    }
-
-    public void LoadClass () {
-        try {
-            //String className = MyClassInitializer.class.getName();
-            String className = MyClassInitializer.className;
-            Class.forName(className);
-            System.out.println();
-        } catch (ClassNotFoundException e) {
-            System.out.println(e.getMessage());
-        }
-    }
-
     public void testProxy(File file) {
         try {
-            Object proxyObject =  Class.forName(className).newInstance();// new MyClassLoader().getClassByFile(file);
-            ((Worker)proxyObject).doWork();
+            Class clazz = new MyClassLoader().getClassByFile(file);
+            ((Worker)clazz.newInstance()).doWork();
+        } catch (IOException e) {
+            e.printStackTrace();
         } catch (IllegalAccessException e) {
             e.printStackTrace();
         } catch (InstantiationException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
     }
