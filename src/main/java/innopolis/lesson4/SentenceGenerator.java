@@ -60,10 +60,10 @@ public class SentenceGenerator {
         int sentenceLen = 1 + RANDOM.nextInt(SENTENCE_LEN);
         String [] words = new String[sentenceLen];
         Arrays.stream(words).map( word -> word = generator.generateRandomLenString()).collect(Collectors.toList()).toArray();
-        return (String[]) Arrays.stream(words)
+        return Arrays.stream(words)
                                 .map( word -> word = generator.generateRandomLenString())
                                 .collect(Collectors.toList())
-                                .toArray();
+                                .toArray(words);
     }
 
     //Генерируем предолжение с обязательным словом

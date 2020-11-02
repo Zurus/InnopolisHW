@@ -3,6 +3,8 @@ package innopolis.lesson4;
 import utils.StringUtils;
 
 import java.security.SecureRandom;
+import java.util.Arrays;
+import java.util.stream.Stream;
 
 import static innopolis.lesson4.TextGenerator.RANDOM;
 
@@ -28,16 +30,16 @@ public class ParagraphGenerator {
     public String generateParagraph(String[] words, int probability) {
         int sentLen = 1 + RANDOM.nextInt(PARAGRPH_LEN);
         StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < sentLen; i++) {
+        Arrays.stream(new int[sentLen]).forEach(a -> {
             if (useArrayWord(probability)) {
                 int wordNum = RANDOM.nextInt(words.length);
                 sb.append(sg.makeSentence(words[wordNum]));
             } else {
                 sb.append(sg.makeSentence());
             }
-        }
+        });
+
         sb.append("\n");
         return sb.toString();
     }
-
 }

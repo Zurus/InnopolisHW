@@ -9,6 +9,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.security.SecureRandom;
+import java.util.Arrays;
 
 public class TextGenerator {
     public final static SecureRandom RANDOM = new SecureRandom();
@@ -21,9 +22,10 @@ public class TextGenerator {
         int paragraphCount = 1 + RANDOM.nextInt(PARAGRAPH_MAX);
         StringBuilder sb = new StringBuilder();
         ParagraphGenerator pg = new ParagraphGenerator();
-        for (int i = 0; i < paragraphCount; i++) {
+        Arrays.stream(new int[paragraphCount]).forEach(a -> {
             sb.append(pg.generateParagraph(words,probability));
-        }
+        });
+        System.out.println(sb.toString());
         new TextWriter().writeTxtToFile(sb.toString(),path,size);
     }
 }
