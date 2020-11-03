@@ -1,7 +1,6 @@
-package lesson10;
+package lesson10.iq;
 
 import java.security.SecureRandom;
-import java.util.Random;
 
 /**
  * Created by ADivaev on 03.11.2020.

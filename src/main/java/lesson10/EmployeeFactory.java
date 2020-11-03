@@ -1,5 +1,12 @@
 package lesson10;
 
+import lesson10.employee.ArthurGopnik;
+import lesson10.employee.Employee;
+import lesson10.employee.ForrestGump;
+import lesson10.employee.TonyStark;
+import lesson10.iq.IqGenerator;
+import lesson10.iq.IqLevel;
+
 import java.util.ArrayList;
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package lesson10;
+package lesson10.iq;
 
 /**
  * Created by ADivaev on 03.11.2020.

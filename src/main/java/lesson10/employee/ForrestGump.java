@@ -1,4 +1,6 @@
-package lesson10;
+package lesson10.employee;
+
+import lesson10.employee.Employee;
 
 /**
  * Created by ADivaev on 03.11.2020.
