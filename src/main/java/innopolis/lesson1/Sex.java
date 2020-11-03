@@ -1,4 +1,4 @@
-package innopolis.lesson1.person;
+package innopolis.lesson1;
 
 public enum Sex {
     WOMAN(0),
