@@ -1,4 +1,4 @@
-package innopolis.lesson1.person;
+package innopolis.lesson1;
 
 public class Person {
 
