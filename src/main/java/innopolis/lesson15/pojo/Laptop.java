@@ -13,6 +13,12 @@ public class Laptop {
         this.manufacturerId = manufacturerId;
     }
 
+    public Laptop(String name, int price, int manufacturerId) {
+        this.name = name;
+        this.price = price;
+        this.manufacturerId = manufacturerId;
+    }
+
     @Override
     public String toString() {
         return "name='" + name + ", price=" + price;
@@ -48,5 +54,11 @@ public class Laptop {
 
     public void setManufacturerId(int manufacturerId) {
         this.manufacturerId = manufacturerId;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        Laptop otherLaptop = (Laptop) obj;
+        return name.equals(otherLaptop.getName()) && price == otherLaptop.getPrice() && manufacturerId == otherLaptop.getManufacturerId();
     }
 }

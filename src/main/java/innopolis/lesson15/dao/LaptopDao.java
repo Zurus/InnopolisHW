@@ -1,9 +1,12 @@
 package innopolis.lesson15.dao;
 
+import com.sun.rowset.CachedRowSetImpl;
 import innopolis.lesson15.ConnectorImpl;
+import innopolis.lesson15.MyListener;
 import innopolis.lesson15.pojo.Laptop;
 import org.apache.log4j.Logger;
 
+import javax.sql.rowset.CachedRowSet;
 import java.sql.*;
 
 public class LaptopDao implements SimpleDao {
@@ -51,8 +54,11 @@ public class LaptopDao implements SimpleDao {
              Statement statement = connection.createStatement()
         ) {
             try (ResultSet rs = statement.executeQuery(QUERY_ALL)) {
-                while (rs.next()) {
-                    System.out.println(rs.getString("name"));
+                CachedRowSet cRS = new CachedRowSetImpl();
+                cRS.populate(rs);
+                cRS.addRowSetListener(new MyListener());
+                while (cRS.next()) {
+                    logger.info(cRS.getString("name"));
                 }
             }
         } catch (SQLException e) {
@@ -61,20 +67,24 @@ public class LaptopDao implements SimpleDao {
     }
 
     @Override
-    public void selectLaptopMorePrice(int price) {
+    public int selectLaptopMorePrice(int price) {
         logger.info("Ноутбуки с ценой = " + price);
+        int count = 0;
         try (Connection connection = ConnectorImpl.getConnection();
              PreparedStatement statement = connection.prepareStatement(QUERY_PRICE_PARAM)
         ) {
+
             statement.setInt(1, price);
             try (ResultSet rs =  statement.executeQuery()) {
                 while (rs.next()) {
-                    System.out.println(rs.getString("name"));
+                    logger.info(rs.getString("name"));
+                    count ++;
                 }
             }
         } catch (SQLException e) {
             logger.error(SQL_ERROR_MSG, e);
         }
+        return count;
     }
 
     @Override
@@ -127,4 +137,35 @@ public class LaptopDao implements SimpleDao {
             logger.error("SQLError {}", e);
         }
     }
+
+    @Override
+    public void insertData() {
+        logger.info("Манипуляция с автокоммитом");
+        try (Connection connection = ConnectorImpl.getConnection();
+             PreparedStatement statement = connection.prepareStatement(QUERY_ADD_LAPTOP)
+        ) {
+            connection.setAutoCommit(false);
+
+            Laptop firstLapton = new Laptop("Huawai", 228, 1);
+
+            statement.setString(1, firstLapton.getName());
+            statement.setInt(2, firstLapton.getPrice());
+            statement.setInt(3, firstLapton.getManufacturerId());
+
+            Savepoint fist_savePoint = connection.setSavepoint("first");
+
+            Laptop secondLapton = new Laptop("Motorola", 100500, 2);
+
+            statement.setString(1, firstLapton.getName());
+            statement.setInt(2, firstLapton.getPrice());
+            statement.setInt(3, firstLapton.getManufacturerId());
+
+            connection.rollback(fist_savePoint);
+            connection.commit();
+        } catch (SQLException e) {
+            logger.error(SQL_ERROR_MSG, e);
+        }
+
+    }
+
 }
